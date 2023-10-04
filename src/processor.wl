@@ -1,8 +1,14 @@
 BeginPackage["JerryI`WolframJSFrontend`MermaidSupport`"];
 
-Begin["Private`"];
 
-MermaidQ[str_] := Length[StringCases[StringSplit[str, "\n"] // First, RegularExpression["^\\.mermaid$"]]] > 0;
+Begin["`Private`"];
+
+
+MermaidQ[___] := False
+
+
+MermaidQ[str_String] := StringMatchQ[str, StartOfString ~~ ".mermaid"];
+
 
 MermaidProcessor[expr_String, signature_String, callback_] := Module[{str = StringDrop[expr, StringLength[First[StringSplit[expr, "\n"]]] ]},
   Print["MermaidProcessor!"];
@@ -14,9 +20,19 @@ MermaidProcessor[expr_String, signature_String, callback_] := Module[{str = Stri
   ];
 ];
 
-JerryI`WolframJSFrontend`Notebook`NotebookAddEvaluator[(MermaidQ ->  <|"SyntaxChecker"->(True&),               "Epilog"->(#&),             "Prolog"->(#&), "Evaluator"->MermaidProcessor  |>), "HighestPriority"];
+
+JerryI`WolframJSFrontend`Notebook`NotebookAddEvaluator[
+  MermaidQ -> <|
+    "SyntaxChecker"->(True&), 
+    "Epilog"->(#&), 
+    "Prolog"->(#&), 
+    "Evaluator"->MermaidProcessor
+  |>, 
+  "HighestPriority"
+];
 
 
 End[];
+
 
 EndPackage[];
