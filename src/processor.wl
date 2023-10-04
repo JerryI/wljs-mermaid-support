@@ -7,7 +7,7 @@ Begin["`Private`"];
 MermaidQ[___] := False
 
 
-MermaidQ[str_String] := StringMatchQ[str, StartOfString ~~ ".mermaid"];
+MermaidQ[str_String] := StringMatchQ[str, StartOfString ~~ ".mermaid" ~~ __];
 
 
 MermaidProcessor[expr_String, signature_String, callback_] := Module[{str = StringDrop[expr, StringLength[First[StringSplit[expr, "\n"]]] ]},
