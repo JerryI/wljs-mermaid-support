@@ -10,7 +10,7 @@ MermaidQ[___] := False
 MermaidQ[str_String] := StringMatchQ[str, StartOfString ~~ ".mermaid" ~~ __];
 
 
-MermaidProcessor[expr_String, signature_String, callback_] := Module[{str = StringDrop[expr, StringLength[First[StringSplit[expr, "\n"]]] ]},
+MermaidProcessor[expr_String, signature_String, parent_, callback_] := Module[{str = StringDrop[expr, StringLength[First[StringSplit[expr, "\n"]]] ]},
   Print["MermaidProcessor!"];
   callback[
       str,

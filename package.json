@@ -1,9 +1,11 @@
 {
   "name": "wljs-mermaid-support",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "Mermaid diagrams support for WLJS Editor",
   "scripts": {
-    "build": "node --max-old-space-size=8192 ./node_modules/.bin/rollup --config rollup.config.mjs"
+    "build": "node --max-old-space-size=8192 ./node_modules/.bin/rollup --config rollup.config.mjs",
+    "restore": "mkdir _temp && cd _temp && git clone https://github.com/JerryI/wljs-mermaid-support && mv wljs-mermaid-support/.git ../.git && cd .. && rm -rf _temp"
+   
   },
   "defaultPackage": true,
   "wljs-meta": {
