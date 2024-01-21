@@ -19,7 +19,7 @@ class MermaidCell {
     
 
     if (!mermaidDiagrams) {
-      import('./mermaid.core-9eb75b2e.js').then(function (n) { return n.aJ; }).then(({ default: mermaid }) => {
+      import('./mermaid.core-7fd9ba67.js').then(function (n) { return n.b7; }).then(({ default: mermaid }) => {
         mermaidDiagrams = mermaid;
         mermaidDiagrams.initialize({ startOnLoad: false });
         mermaidDiagrams.render('mermaid-'+uid, data).then((data)=>{
