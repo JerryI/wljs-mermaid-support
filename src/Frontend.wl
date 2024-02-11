@@ -10,7 +10,7 @@ Begin["`Internal`"]
 
 Q[t_Transaction] := (StringMatchQ[t["Data"], ".mermaid\n"~~___] )
 
-evaluator  = StandardEvaluator["Name" -> "JS Evaluator", "InitKernel" -> init, "Pattern" -> (_?Q), "Priority"->(5)];
+evaluator  = StandardEvaluator["Name" -> "Mermaid Evaluator", "InitKernel" -> init, "Pattern" -> (_?Q), "Priority"->(5)];
 
     StandardEvaluator`ReadyQ[evaluator, k_] := (
         If[! TrueQ[k["ReadyQ"] ] || ! TrueQ[k["ContainerReadyQ"] ],
